@@ -92,48 +92,81 @@ let's compare the shapes of PK curves resulting from different administration me
 
 ## 4. model structure 
 
-the model structure affects the shape of the pK profile 
-In this section we will look at three different aspects of model structure including the number of compartments
- the presence or absence of a time lag 
-  saturating elimination
+- the model structure affects the shape of the pK profile 
+- three different aspects of model structure
+  - number of compartments
+  - presence or absence of a time lag 
+  - saturating elimination
   
- click next to continue let's start by looking at
- 
- the effect of the number of compartments a
+The effect of the number of compartments:
  
  one compartment model is the simplest 
  
-here is a one compartment extravascular model this model only has three parameters k a v and CL adds a peripheral compartment which can take up some of the drug a two compartment model is often needed when there is a sizable distribution phase
+- one compartment extravascular model
+- has three parameters k a v and CL
 
-And we can even have three compartments in our model this is the three compartment extravascular model available from the built-in options this model adds two more parameters V3 and CL3 for a total of seven parameters The three compartment model is not used frequently because it is often more difficult to get a good fit using seven parameters than with 5 parameters click next to continue
+Two comartment models adds a peripheral compartment which can take up some of the drug
+- needed when there is a sizable distribution phase
+- five parameters
 
- let's consider the shape but the PK curve with models that have between 1 and 3 compartments we will start with ivy bolus administration a one compartment IV bolus model is just a straight line when plotted on a log concentration axis 
+three compartments 
+- adds two more parameters V3 and CL3 
+- The three compartment model is not used frequently
+![](img/structure-1.png)
+
+ shape but the PK curve 
+
+![](img/structure-2.png)
+- one compartment IV bolus model is just a straight line when plotted on a log concentration axis 
+- a two compartment model is useful when there is a distribution phase that is different than the elimination phase 
+- The three compartment model can have three distinct phases
+- it will not always be as apparent that there are multiple phases instead of two distinct phases we may see a general curvature that blends two or more phases together  
+
+
+corresponding extravascular Administration but
+
+![](img/structure-3.png)
+- Early distribution phases can become obscured because of the absorption phase
+- this is particularly apparent in the three compartment model where the first distribution phase is entirely obscured by the absorption 
+
  
-a two compartment model is useful when there is a distribution phase that is different than the elimination phase 
+time lag
 
-The three compartment model can have three distinct phases we have chosen parameters that make the phases in these curves very distinct but it will not always be as apparent that there are multiple phases instead of two distinct phases we may see a general curvature that blends two or more phases together click next to continue
+many drugs take some time to show up in systemic circulation and the time lag is a way that we can account for this in our model 
 
- if we look at the corresponding extravascular
-Administration but
+on the left is a model with the time lag and on the right is the corresponding model without a time lag T-Lag is a parameter that causes the absorption to be delayed Time lag has the same time units as the time column 
 
-Early distribution phases can become obscured because of the absorption phase this is particularly apparent in the three compartment model where the first distribution phase is entirely obscured by the absorption In a later lesson we will see how to determine which model to use are decision will be made by weighing all the evidence such as goodness of fit diagnostics and reliable parameter values in the end whichever model best describes the data is what we will use click next to continue which model type would have the best
-The next consideration is whether or not there is a time lag in the absorption many drugs take some time to show up in systemic circulation and the time lag is a way that we can account for this in our model on the left is a model with the time lag and on the right is the corresponding model without a time lag T-Lag is a parameter that causes the absorption to be delayed Time lag has the same time units as the time column click next to continue
+- add a time lag to your model if tmax does not fit properly
+- The model fit can then adjust both the KA and the T-Lag values to obtain and improve fit
 
-The model given by the purple curve is a one compartment model without a time lag The model given by the yellow line has a timeline of 1 hour and it causes the entire curve to shift to the right by one hour
-You may need to add a time lag to your model The model fit can then adjust both the KA and the T-Lag values to obtain and improve fit click next to continue finally saturation is another aspect of structural models on the left is a model with saturating elimination compared to the corresponding model with linear elimination saturation is often referred to as Michaela
+saturation
 
-
+- linear elimination saturation is often referred to as Michaela
+- replaces clearance parameter with Km and Vmax
+![](img/saturation-1.png)
+Clearance is no longer constant
+Clearance is depended on the concengtratino 
+downward bend is characteristics of saturating kinetics
+saturation increased with higher doses
+-
+![](img/saturation-2.png)
 Let's see how this change affects the shape of the PK curve click next to continue
-
- here are simulated curves for a drug that has a KM value of 1,000 in a saturating model clearance becomes the expression v max over km + c this means that clearance depends on the concentration and the clearance is no longer constant notice how different doses have PK curves with dramatically different shapes notice how many of the curves have a downward bend this downward bend is a characteristic of saturating kinetics it may not be observed at lower doses but as the dose increases we may encounter saturation and it is useful to know what it looks like at the lowest dose shown here the yellow curve looks just like a one compartment model with linear kinetics as the dose increases we see more saturation notice how when the concentration is higher than the KM value the apparent clearance is much lower and the slopes are much shallower at higher 
-
-concentrations scale
-
-Compressed at the bottom of the
-The increase in AUC is far beyond what we would have predicted under linear kinetics In cases were saturation is observed it is important to have data from more than one dose amount so that you can obtain in reliable parameter estimates
- click next to continue
+![](img/saturation-3.png)
+ here are simulated curves for a drug that has a KM value of 1,000 in a saturating model clearance becomes the expression v max over km + c this means that clearance depends on the concentration and the clearance is no longer constant notice how different doses have PK curves with dramatically different shapes notice how many of the curves have a downward bend this downward bend is a characteristic of saturating kinetics it may not be observed at lower doses but as the dose increases we may encounter saturation and it is useful to know what it looks like at the lowest dose shown here the yellow curve looks just like a one compartment model with linear kinetics as the dose increases we see more saturation notice how 
  
- if we consider the expression for the effective clearance at different concentrations we can consider two extremes when the concentration is much lower than the KM value we do not see any saturation and the clearance is constant clearance over KM at the other extreme when the concentration is much greater than the KM value The clearance reduces to VMAX over c as the concentration increases the clearance becomes progressively smaller at very high concentrations we are overwhelming the elimination pathway usually this happens when an enzyme has a finite capacity to eliminate the drug and we are overloading it you may never need to create a model with saturating elimination but it is good to know when to recognize that saturation
+- when the concentration is higher than the KM value the apparent clearance is much lower and the slopes are much shallower at higher concentrations scale
+- This breakdown the dose proportionality
+
+Linear scale:
+
+- The increase in AUC is far beyond what we would have predicted under linear kinetics 
+- In cases were saturation is observed it is important to have data from more than one dose amount so that you can obtain in reliable parameter estimates
+
+![](img/saturation-4.png) 
+ 
+![](img/saturation-5.png)
+ if we consider the expression for the effective clearance at different concentrations we can consider two extremes when the concentration is much lower than the KM value we do not see any saturation and the clearance is constant 
+ clearance over KM at the other extreme when the concentration is much greater than the KM value The clearance reduces to VMAX over c as the concentration increases the clearance becomes progressively smaller at very high concentrations we are overwhelming the elimination pathway usually this happens when an enzyme has a finite capacity to eliminate the drug and we are overloading it you may never need to create a model with saturating elimination but it is good to know when to recognize that saturation
 
 
 let's recap the section we have seen that the model structure is typically defined by the number of compartments the presence or absence of a time lag and the possibility of saturating elimination These three items can be combined to make a very large number of potential models click next to continue
